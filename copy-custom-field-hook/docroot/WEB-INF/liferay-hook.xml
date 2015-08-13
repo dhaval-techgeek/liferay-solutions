@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.2.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_2_0.dtd">
+
+<hook>
+	<custom-jsp-dir>/custom_jsps</custom-jsp-dir>
+	<service>
+		<service-type>com.liferay.portal.service.UserLocalService</service-type>
+		<service-impl>com.sample.service.hook.UserLocalServiceImplCustom</service-impl>
+	</service>
+
+	<struts-action>
+		<struts-action-path>/expando/edit_expando</struts-action-path>
+		<struts-action-impl>
+			com.sample.service.hook.CustomEditExpandoAction
+		</struts-action-impl>
+	</struts-action>
+</hook>
