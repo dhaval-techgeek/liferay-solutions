@@ -8,12 +8,16 @@ import java.util.Date;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletException;
+import javax.portlet.PortletMode;
 import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+import org.junit.experimental.theories.PotentialAssignment;
+
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
 /**
@@ -32,6 +36,9 @@ public class CountDownPortlet extends MVCPortlet {
 			prefs.setValue("eventDateAndTime", eventDateAndTime);
 			prefs.store();
 		}
+		SessionMessages.add(actionRequest, "request_processed");
+		actionResponse.setPortletMode(PortletMode.VIEW);
+		
 	}
 
 	@Override
